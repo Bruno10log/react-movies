@@ -1,4 +1,6 @@
 import React, {Component} from 'react';
+import {Link} from 'react-router-dom';
+import './home.css';
 
 class Home extends Component {
     
@@ -29,8 +31,19 @@ class Home extends Component {
 
     render() {
         return(
-            <div>
-                Pagina Home
+
+            <div className="container">
+                <div className="lista-filmes">
+                    {this.state.filmes.map((filme) => {
+                        return(
+                            <article>
+                                <strong> {filme.nome} </strong>
+                                <img alt="" src={filme.foto}></img>
+                                <Link to={`/filme/${filme.id}`}>Acessar</Link>
+                            </article>
+                        )
+                    })}
+                </div>
             </div>
         )
     }
